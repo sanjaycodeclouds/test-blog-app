@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %> <%- include("../partials/scripts") %>
+    <title>Dashboard Page</title>
+  </head>
+  <body>
+    <%- include("../partials/nav") %>
+
+    <div class="container mt-4">
+      
+      <pre><%= JSON.stringify(user, null, 2) %></pre>
+      
+    </div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %> <%- include("../partials/scripts") %>
+    <title>Blog Detail Page</title>
+  </head>
+  <body>
+    <%- include("../partials/nav") %>
+
+        <div class="container mt-3">
+                
+            <img src="/<%= blogDetails.coverImageUrl %>" class="card-img-top" alt="<%- blogDetails.title %>" width="200px">
+            <div class="card-body">
+                <h5 class="card-title"><%- blogDetails.title %></h5>
+                <p><%- blogDetails.body %></p>
+            </div>
+                    
+        </div>
+
+        <div class="container mt-3">
+            <img src="<%= blogDetails.createdBy.profileImageUrl %>" width="100px"/>
+            <%= blogDetails.createdBy.fullName %>
+        </div>
+
+        <div class="container">
+          <h2>Comments (<%= allComment.length %>)</h2>
+          <form method="post" action="/comment/add-comment/<%= blogDetails._id %>">
+            <textarea name="content" required style="width: 100%;"></textarea><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+
+        <ul>
+        <% allComment.forEach(comment => { %>
+          <li> 
+              <p>Posted By: <%- comment.createdBy.fullName %></p>
+              <p><%- comment.content %></p>
+              
+          </li>
+        <% }) %>
+        </ul>
+  </body>
+</html>
